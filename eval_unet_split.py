@@ -52,7 +52,7 @@ torch.autograd.set_grad_enabled(False)
 gunet.eval()
 gunet21.eval()
 gunet22.eval()
-datapath='/mnt/UserData1/Data/FaceAntiSpoofing/'
+datapath='/mnt/UserData1/peipeng/Data/FaceAntiSpoofing_Face/'
 with open(datapath+'p1/dev.txt','r') as f:
     data=f.read()
 evaldata1=data.split('\n')[:-1]
@@ -65,30 +65,24 @@ with open(datapath+'p2.2/dev.txt','r') as f:
     data=f.read()
 evaldata3=data.split('\n')[:-1]
 
-datapath2='/mnt/UserData1/Data/FaceAntiSpoofingTest/phase2/'
-with open(datapath2+'p1/test.txt','r') as f:
+
+with open(datapath+'p1/test.txt','r') as f:
     data=f.read()
 evaldata12=data.split('\n')[:-1]
 
-with open(datapath2+'p2.1/test.txt','r') as f:
+with open(datapath+'p2.1/test.txt','r') as f:
     data=f.read()
 evaldata22=data.split('\n')[:-1]
 
-with open(datapath2+'p2.2/test.txt','r') as f:
+with open(datapath+'p2.2/test.txt','r') as f:
     data=f.read()
 evaldata32=data.split('\n')[:-1]
-print(len(evaldata1),len(evaldata12),len(evaldata2),len(evaldata22),len(evaldata3),len(evaldata32))
 
 torch.set_printoptions(precision=6,sci_mode=False)
 np.set_printoptions(suppress=True)
 for data in [evaldata1,evaldata12]:
-    for file in data:
-        if 'test' in file:
-            filepath=datapath2+file
-            filepath=filepath.replace("FaceAntiSpoofingTest",'FaceAntiSpoofingTest_Face')
-        else:
-            filepath=datapath+file
-            filepath=filepath.replace('FaceAntiSpoofing','FaceAntiSpoofing_Face')
+    for file in data:  
+        filepath=datapath+file
         img= Image.open(filepath).convert('RGB')
         img=np.array(img.resize((256,256)))
         img = img[:, :, ::-1].copy()
@@ -101,12 +95,7 @@ for data in [evaldata1,evaldata12]:
 
 for data in [evaldata2,evaldata22]:
     for file in data:
-        if 'test' in file:
-            filepath=datapath2+file
-            filepath=filepath.replace("FaceAntiSpoofingTest",'FaceAntiSpoofingTest_Face')
-        else:
-            filepath=datapath+file
-            filepath=filepath.replace('FaceAntiSpoofing','FaceAntiSpoofing_Face')
+        filepath=datapath+file
         img= Image.open(filepath).convert('RGB')
         img=np.array(img.resize((256,256)))
         img = img[:, :, ::-1].copy()
@@ -119,12 +108,7 @@ for data in [evaldata2,evaldata22]:
 
 for data in [evaldata3,evaldata32]:
     for file in data:
-        if 'test' in file:
-            filepath=datapath2+file
-            filepath=filepath.replace("FaceAntiSpoofingTest",'FaceAntiSpoofingTest_Face')
-        else:
-            filepath=datapath+file
-            filepath=filepath.replace('FaceAntiSpoofing','FaceAntiSpoofing_Face')
+        filepath=datapath+file
         img= Image.open(filepath).convert('RGB')
         img=np.array(img.resize((256,256)))
         img = img[:, :, ::-1].copy()
