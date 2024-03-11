@@ -71,18 +71,9 @@ class AUGDFDataset(Dataset):
     def next_epoch(self):
         with open(self.jsonpath, 'r') as f:
             data = json.load(f)
-        with open('jsons/data_devtest.json', 'r') as f:
-            evaldata = json.load(f)
-        if self.dataselect == 'train':
-            if 'p1' in self.jsonpath:
-                # trainset = data['train']
-                trainset = data['train']+evaldata['p1test']+evaldata['p1dev']
-            if 'p2.1' in self.jsonpath:
-                # trainset = data['train']
-                trainset = data['train']+evaldata['p21test']+evaldata['p21dev']
-            if 'p2.2' in self.jsonpath:
-                # trainset = data['train']
-                trainset = data['train']+evaldata['p22test']+evaldata['p22dev']
+       
+        if self.dataselect == 'train':  
+            trainset = data['train']
             self.dataset = trainset
         if self.dataselect == 'val':
             valset = data['val']
