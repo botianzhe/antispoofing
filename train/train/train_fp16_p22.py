@@ -93,7 +93,7 @@ def buildmodel():
 modelpath='../p22_eff0_12.pth'
 gunet=buildmodel()
 modelname='deeplabv3plus'
-gunet=load_model(gunet,modelpath)
+# gunet=load_model(gunet,modelpath)
 # input = torch.randn(1, 3, 256, 256)
 # macs, params = profile(gunet, inputs=(input, ))
 # macs, params = clever_format([macs, params], "%.3f")
