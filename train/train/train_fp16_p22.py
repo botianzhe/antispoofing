@@ -90,7 +90,7 @@ def buildmodel():
     )
     return unet
 
-modelpath='../code/p22_eff0_12.pth'
+modelpath='../p22_eff0_12.pth'
 gunet=buildmodel()
 modelname='deeplabv3plus'
 gunet=load_model(gunet,modelpath)
