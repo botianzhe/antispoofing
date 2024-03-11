@@ -90,7 +90,7 @@ def buildmodel():
     )
     return unet
 
-modelpath='../code/p1_eff0_20.pth'
+modelpath='../p1_eff0_20.pth'
 
 gunet=buildmodel()
 modelname='unet'
