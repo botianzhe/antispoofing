@@ -1,11 +1,12 @@
 # Training Process
 
 1. modify data path in generatejson.py and run it to generate json files.
-2. run train_fp16_p1.py about 50 epoches to generate best checkpoint file.
-3. run train_fp16_p21.py about 50 epoches to generate best checkpoint file.
-4. run train_fp16_p22.py about 50 epoches to generate best checkpoint file.
-5. use the generated three checkpoint files to generate  predictions for dev and test datasets.(python eval_unet_split_tojson.py)
-6. modify dataset.py to add the generated predictions to training dataset.(uncomment the line in "if self.dataselect == 'train':")
-7. load the generated three checkpoint files and use the new training datasets to train the three models respectively.
-8. repeat step 6 and 7 several times(about 10 times.)
-9. use the final three checkpoint files to generate prediction.
+2. download dlib file from https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat and put it in faker folder.
+3. run train_fp16_p1.py about 50 epoches to generate best checkpoint file.
+4. run train_fp16_p21.py about 50 epoches to generate best checkpoint file.
+5. run train_fp16_p22.py about 50 epoches to generate best checkpoint file.
+6. use the generated three checkpoint files to generate  predictions for dev and test datasets.(python eval_unet_split_tojson.py)
+7. modify dataset.py to add the generated predictions to training dataset.(uncomment the line in "if self.dataselect == 'train':")
+8. load the generated three checkpoint files and use the new training datasets to train the three models respectively.
+9. repeat step 6 and 7 several times(about 10 times.)
+10. use the final three checkpoint files to generate prediction.
